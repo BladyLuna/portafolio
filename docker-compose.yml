@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3080:80"
+    restart: unless-stopped
+    networks:
+      - portafolio-net
+
+networks:
+  portafolio-net:
+    driver: bridge

@@ -1,0 +1,22 @@
+---
+import { profile } from "../data/profile";
+import SectionTitle from "./ui/SectionTitle.astro";
+---
+
+<section id="growth" class="px-6 md:px-12 max-w-4xl mx-auto py-24">
+  <SectionTitle title="Áreas de Crecimiento" subtitle="Tecnologías que estoy explorando activamente" />
+  <div class="grid gap-4 md:grid-cols-3">
+    {profile.growthAreas.map((area) => (
+      <div class="relative group">
+        <div class="absolute -inset-px bg-gradient-to-b from-white/[0.04] to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div class="relative bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 backdrop-blur-sm transition-all duration-200 group-hover:border-white/[0.12] h-full">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20 flex items-center justify-center mb-3 shadow-sm">
+            <span class="text-sm font-mono text-blue-400 font-bold">~</span>
+          </div>
+          <h3 class="text-sm font-semibold text-[#e0e0e0] mb-2">{area.area}</h3>
+          <p class="text-xs text-[#909090] leading-relaxed">{area.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

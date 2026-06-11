@@ -1,0 +1,31 @@
+---
+import Badge from "./ui/Badge.astro";
+import type { profile } from "../data/profile";
+
+type Project = (typeof profile)["projects"][number];
+
+const { project }: { project: Project } = Astro.props;
+---
+
+<a
+  href={project.link}
+  class="block bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] rounded-xl p-6 transition-all duration-200 group"
+>
+  <div class="flex items-start justify-between mb-3">
+    <div>
+      <h3 class="text-lg font-semibold text-[#fafafa] group-hover:text-blue-400 transition-colors">
+        {project.title}
+      </h3>
+      <p class="text-sm text-[#a0a0a0] mt-0.5">{project.role}</p>
+    </div>
+    <Badge>{project.period}</Badge>
+  </div>
+  <p class="text-sm text-[#909090] leading-relaxed mb-4">{project.description}</p>
+  <div class="flex flex-wrap gap-2">
+    {project.tech.map((t) => (
+      <span class="px-2.5 py-1 bg-white/[0.04] border border-white/[0.06] rounded-md text-xs text-[#b0b0b0] font-mono">
+        {t}
+      </span>
+    ))}
+  </div>
+</a>

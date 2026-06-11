@@ -1,0 +1,60 @@
+---
+import { profile } from "../data/profile";
+import SectionTitle from "./ui/SectionTitle.astro";
+import Badge from "./ui/Badge.astro";
+
+const levelLabels = {
+  comprobado: "Comprobado",
+  intermedio: "Intermedio",
+  explorando: "Explorando",
+};
+
+const levelVariants = {
+  comprobado: "green" as const,
+  intermedio: "yellow" as const,
+  explorando: "blue" as const,
+};
+
+const mainStack = ["Laravel", "PHP", "MySQL", "Docker", "Linux", "Git"];
+---
+
+<section id="skills" class="px-6 md:px-12 max-w-4xl mx-auto py-24">
+  <SectionTitle title="Stack" subtitle="Tecnologías con las que he trabajado" />
+  <div class="grid gap-4 md:grid-cols-2">
+    {profile.skills.map((group) => (
+      <div class="relative group">
+        <div class="absolute -inset-px bg-gradient-to-b from-white/[0.04] to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div class="relative bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 backdrop-blur-sm transition-all duration-200 group-hover:border-white/[0.12]">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-semibold text-[#e0e0e0]">{group.category}</h3>
+            <Badge variant={levelVariants[group.level] || "default"}>
+              {levelLabels[group.level] || group.level}
+            </Badge>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map((skill) => {
+              const isMain = mainStack.includes(skill.name);
+              return (
+                <span class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
+                  isMain
+                    ? "bg-blue-500/10 text-blue-300 border border-blue-500/20"
+                    : "bg-white/[0.04] text-[#b0b0b0] border border-white/[0.06] hover:border-white/[0.12]"
+                }`}>
+                  {skill.name}
+                  {isMain && (
+                    <svg class="w-3 h-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  )}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  <p class="mt-4 text-xs text-[#606060] text-center font-mono">
+    <span class="text-blue-400">●</span> Stack principal — <span class="text-[#707070]">●</span> Nivel comprobado · <span class="text-[#707070]">●</span> Intermedio · <span class="text-[#707070]">●</span> Explorando
+  </p>
+</section>

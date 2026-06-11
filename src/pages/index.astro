@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import SkillsGrid from "../components/SkillsGrid.astro";
+import Experience from "../components/Experience.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import Roadmap from "../components/Roadmap.astro";
+import GrowthAreas from "../components/GrowthAreas.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<Layout>
+  <main class="relative">
+    <Hero />
+    <About />
+    <SkillsGrid />
+    <Experience />
+    <section id="projects" class="scroll-mt-24">
+      <CaseStudy />
+    </section>
+    <GrowthAreas />
+    <Roadmap />
+    <Contact />
+    <footer class="border-t border-white/[0.06] px-6 py-8">
+      <p class="text-center text-xs text-[#505050] font-mono">
+        &copy; {new Date().getFullYear()} Bladimir Luna Corrales &mdash; Construido con Astro + Tailwind CSS
+      </p>
+    </footer>
+  </main>
+</Layout>

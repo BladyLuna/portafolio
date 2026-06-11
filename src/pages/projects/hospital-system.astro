@@ -1,0 +1,155 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import SectionTitle from "../../components/ui/SectionTitle.astro";
+---
+
+<Layout title="Sistema Hospitalario | Bladimir Luna" description="Caso de estudio: Sistema web para gestión de turnos médicos - Laravel, MySQL, Docker">
+  <main class="pt-24 pb-16">
+    <section class="px-6 md:px-12 max-w-4xl mx-auto">
+      <a href="/" class="inline-flex items-center text-sm text-[#707070] hover:text-[#fafafa] transition-colors mb-8 font-mono">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        volver
+      </a>
+
+      <SectionTitle title="Sistema Hospitalario" subtitle="Gestión de Turnos Médicos" />
+
+      <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 md:p-8 space-y-8">
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Contexto</h3>
+          <p class="text-[#c0c0c0] leading-relaxed text-sm">
+            Proyecto de grado enfocado en resolver la ineficiencia en la asignación de turnos médicos 
+            dentro de instituciones hospitalarias. El sistema fue desarrollado con Laravel y MySQL, 
+            contenerizado con Docker, siguiendo una arquitectura modular y buenas prácticas de desarrollo.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Problema</h3>
+          <p class="text-[#c0c0c0] leading-relaxed text-sm">
+            Los procesos manuales de gestión de turnos generan errores humanos, demoras en la atención 
+            al paciente, falta de visibilidad sobre la disponibilidad del personal médico, 
+            y dificultad para generar reportes administrativos.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Solución</h3>
+          <p class="text-[#c0c0c0] leading-relaxed text-sm">
+            Sistema web modular con autenticación de usuarios, roles y permisos (RBAC), 
+            gestión de servicios hospitalarios, asignación de personal basada en disponibilidad, 
+            control de turnos en tiempo real y dashboard administrativo con métricas clave.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Arquitectura</h3>
+          <div class="bg-dark-900 border border-white/[0.06] rounded-lg p-4 overflow-x-auto">
+            <pre class="text-xs text-[#b0b0b0] font-mono leading-relaxed">
+┌─────────────────────────────────────────────────────────┐
+│                    Cliente Web                           │
+│              (HTML, CSS, JavaScript)                     │
+└────────────────────┬────────────────────────────────────┘
+                     │ HTTP Requests
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│              Laravel Application                         │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────────┐   │
+│  │  Routes  │  │  Controllers  │  │  Services/Helpers  │   │
+│  └──────────┘  └──────────┘  └──────────────────────┘   │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────────┐   │
+│  │ Eloquent │  │  Blade   │  │  Middleware (Auth)   │   │
+│  └──────────┘  └──────────┘  └──────────────────────┘   │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                    MySQL Database                         │
+│  usuarios | roles | permisos | servicios | turnos        │
+└─────────────────────────────────────────────────────────┘
+                     ▲
+                     │
+┌─────────────────────────────────────────────────────────┐
+│              Docker Containers                            │
+│    [Nginx] ←→ [PHP-FPM] ←→ [MySQL] ←→ [phpMyAdmin]     │
+└─────────────────────────────────────────────────────────┘
+            </pre>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Stack Tecnológico</h3>
+          <div class="flex flex-wrap gap-2">
+            {["Laravel 10", "PHP 8.2", "MySQL 8", "Docker", "Nginx", "HTML5", "CSS3", "JavaScript", "Git"].map((t) => (
+              <span class="px-3 py-1.5 bg-white/[0.04] border border-white/[0.06] rounded-lg text-xs text-[#b0b0b0] font-mono">{t}</span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Módulos del Sistema</h3>
+          <div class="grid md:grid-cols-2 gap-3">
+            {[
+              { title: "Gestión de Usuarios", desc: "Registro, autenticación y perfiles con roles asignables" },
+              { title: "Roles y Permisos", desc: "Control de acceso granular basado en roles (RBAC)" },
+              { title: "Servicios Hospitalarios", desc: "Catálogo completo de servicios médicos disponibles" },
+              { title: "Asignación de Personal", desc: "Vinculación de personal médico a servicios según disponibilidad" },
+              { title: "Disponibilidad Médica", desc: "Gestión de horarios y disponibilidad del personal" },
+              { title: "Control de Turnos", desc: "Asignación, modificación y seguimiento de turnos" },
+              { title: "Dashboard", desc: "Panel administrativo con métricas y estadísticas" },
+              { title: "Reportes", desc: "Generación de reportes de atención y ocupación" },
+            ].map((mod) => (
+              <div class="bg-white/[0.03] border border-white/[0.06] rounded-lg p-3">
+                <h4 class="text-sm font-medium text-[#e0e0e0] mb-1">{mod.title}</h4>
+                <p class="text-xs text-[#909090]">{mod.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Métricas del Proyecto</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { label: "Módulos", value: "8" },
+              { label: "Roles", value: "3+" },
+              { label: "Tecnologías", value: "9" },
+              { label: "Contenedores", value: "4" },
+            ].map((m) => (
+              <div class="bg-white/[0.03] border border-white/[0.06] rounded-lg p-4 text-center">
+                <p class="text-2xl font-bold text-blue-400 font-mono">{m.value}</p>
+                <p class="text-xs text-[#909090] mt-1">{m.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-3">Lo que aprendí</h3>
+          <ul class="space-y-2">
+            {[
+              "Diseñar arquitecturas modulares con Laravel",
+              "Implementar autenticación y autorización con roles",
+              "Contenerizar aplicaciones web completas con Docker",
+              "Modelar bases de datos relacionales para dominios complejos",
+              "Aplicar buenas prácticas de desarrollo y control de versiones",
+            ].map((item) => (
+              <li class="flex items-start gap-2 text-sm text-[#b0b0b0]">
+                <span class="w-1 h-1 rounded-full bg-blue-400 mt-2 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-white/[0.06] mt-16 px-6 py-8">
+      <p class="text-center text-xs text-[#505050] font-mono">
+        <a href="/" class="hover:text-[#707070] transition-colors">&larr; Volver al portafolio</a>
+      </p>
+    </footer>
+  </main>
+</Layout>

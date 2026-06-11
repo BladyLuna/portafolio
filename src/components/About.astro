@@ -1,0 +1,49 @@
+---
+import { profile } from "../data/profile";
+import SectionTitle from "./ui/SectionTitle.astro";
+---
+
+<section id="about" class="px-6 md:px-12 max-w-4xl mx-auto py-24">
+  <SectionTitle title="Sobre mí" subtitle="Quién soy y qué estoy construyendo" />
+  <div class="grid md:grid-cols-2 gap-8">
+    <div>
+      <p class="text-[#c0c0c0] leading-relaxed text-base">
+        {profile.description}
+      </p>
+      <div class="mt-6 space-y-3">
+        <div class="flex items-center gap-3 text-sm text-[#a0a0a0]">
+          <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          {profile.location}
+        </div>
+        <div class="flex items-center gap-3 text-sm text-[#a0a0a0]">
+          <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {profile.email}
+        </div>
+      </div>
+    </div>
+    <div class="relative group">
+      <div class="absolute -inset-px bg-gradient-to-b from-blue-500/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div class="relative bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 backdrop-blur-sm">
+        <h3 class="text-sm font-semibold text-[#a0a0a0] uppercase tracking-wider mb-4">Lo que me define</h3>
+        <ul class="space-y-4">
+          {[
+            { text: "Extremadamente curioso — aprendo tecnologías rápido", color: "bg-blue-400" },
+            { text: "Prefiero construir cosas reales antes que memorizar teoría", color: "bg-green-400" },
+            { text: "Apasionado por Linux, el software libre y la infraestructura", color: "bg-purple-400" },
+            { text: "Explorando activamente DevOps, IA local y ciberseguridad", color: "bg-yellow-400" },
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full {item.color} mt-2 shrink-0" />
+              <span class="text-[#c0c0c0] text-sm">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

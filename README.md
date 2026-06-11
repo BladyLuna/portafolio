@@ -45,6 +45,34 @@ Después del despliegue, la URL de Pages será `https://<TU_USUARIO>.github.io/p
 2. Modifica o añade componentes en `src/components/`.
 3. Ejecuta `npm run build` y despliega según el proceso de Pages.
 
+## Seguridad y despliegue automático
+
+- Antes de commitear: asegúrate de no añadir archivos con secretos. Revisa `git status` y `git diff --staged`.
+- Este repositorio incluye una serie de medidas para evitar fugas de secretos:
+  - `.gitignore` contiene `*.pem`, `*.key`, `.env*`, `dist/`, `node_modules/`, `.DS_Store`.
+  - Un script de escaneo `scripts/check_secrets.js` revisa patrones comunes de secretos.
+  - Un gancho opcional `./.githooks/pre-push` está incluido; para activarlo localmente ejecuta:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+- Despliegue automático: el workflow de GitHub Actions en `.github/workflows/deploy.yml` compila y publica `dist/` en GitHub Pages cada push a `main`/`master`.
+- No almacenar secretos en el repositorio: usa `GitHub Secrets` para valores sensibles cuando una Action los necesite.
+
+## Dominio personalizado (Name.com)
+
+Este repositorio ya publica en `gh-pages`. Para usar `bladyluna.dev` añade un registro `A` en Name.com apuntando a los IPs de GitHub Pages:
+
+- `185.199.108.153`
+- `185.199.109.153`
+- `185.199.110.153`
+- `185.199.111.153`
+
+Explicación: los registros `A` apuntan el dominio raíz al servicio de alojamiento (GitHub Pages). Para `www` añade un `CNAME` apuntando a `your-github-username.github.io`.
+
+No aplico cambios DNS por ti; confirma antes de editar los registros. Tras la propagación GitHub emitirá el certificado HTTPS automático.
+
 ---
 
 Si quieres que yo cree el repositorio público en GitHub y despliegue automáticamente, dímelo y lo hago ahora.

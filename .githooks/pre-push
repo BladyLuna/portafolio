@@ -3,7 +3,7 @@
 echo "Running pre-push checks..."
 echo "Staged files:"
 git diff --name-only --staged || true
-node ./scripts/check_secrets.js
+npm run check:secrets
 rc=$?
 if [ $rc -ne 0 ]; then
   echo "Potential secrets detected. Push aborted. Review staged files and remove secrets."

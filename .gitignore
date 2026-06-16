@@ -7,9 +7,24 @@ dist/
 # dependencies
 node_modules/
 
+# local tooling and editor state
+.commandcode/
+.codex/
+.agents/
+.vscode/*
+!.vscode/extensions.json
+
 # Private keys and certs
 *.pem
 *.key
+*.p12
+*.pfx
+*.crt
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+.ssh/
 
 # Local env files
 .env*
@@ -19,10 +34,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
-# environment variables
-.env
-.env.production
 
 # macOS-specific files
 .DS_Store

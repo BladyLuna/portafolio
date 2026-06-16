@@ -1,3 +1,4 @@
+
 # Portafolio Web — Bladimir Luna Corrales
 
 Sitio personal estático construido con Astro + TypeScript + Tailwind CSS. Presenta proyectos, experiencia y habilidades desde una única fuente de datos en `src/data/profile.ts`.

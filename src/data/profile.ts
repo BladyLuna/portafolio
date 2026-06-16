@@ -5,10 +5,10 @@ export const profile = {
   description:
     "Autodidacta, curioso y constructor. Mi enfoque está en el backend con Laravel y PHP, la administración de servidores Linux, y la contenerización con Docker. Actualmente exploro áreas como DevOps, inteligencia artificial local y ciberseguridad como siguientes pasos en mi formación.",
   location: "Colombia",
-  email: "bladimir@email.com",
+  email: "bladimirlunacorrales@gmail.com",
   social: {
-    github: "https://github.com/bladimir",
-    linkedin: "https://linkedin.com/in/bladimir",
+    github: "https://github.com/BladyLuna",
+    linkedin: "https://www.linkedin.com/in/bladimir-luna-corrales-4a19a4370",
   },
   skills: [
     {
